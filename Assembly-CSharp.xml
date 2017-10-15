@@ -1,0 +1,699 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assembly-CSharp</name>
+    </assembly>
+    <members>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundleList">
+            <summary>
+            Asset bundle list type.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleList"/> class.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleList.#ctor(System.String,System.String,AutoyaFramework.AssetBundles.AssetBundleInfo[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleList"/> class.
+            </summary>
+            <param name="target">Target.</param>
+            <param name="version">Version.</param>
+            <param name="assetBundles">Asset bundles.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleList.#ctor(AutoyaFramework.AssetBundles.AssetBundleList)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleList"/> class.
+            </summary>
+            <param name="baseList">Base list.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleList.Exists">
+            <summary>
+            Exists this instance.
+            </summary>
+            <returns>The exists.</returns>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundleInfo">
+            <summary>
+            type of Asset bundle info.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleInfo.#ctor(System.String,System.String[],System.String[],System.UInt32,System.String,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleInfo"/> struct.
+            </summary>
+            <param name="bundleName">Bundle name.</param>
+            <param name="assetNames">Asset names.</param>
+            <param name="dependsBundleNames">Depends bundle names.</param>
+            <param name="crc">Crc.</param>
+            <param name="hash">Hash.</param>
+            <param name="size">Size.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleInfo.#ctor(AutoyaFramework.AssetBundles.AssetBundleInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleInfo"/> struct.
+            </summary>
+            <param name="baseAssetBundleInfo">Base asset bundle info.</param>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundleListDownloader">
+            <summary>
+            Asset bundle list downloader.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleListDownloader.#ctor(AutoyaFramework.AssetBundles.AssetBundleListDownloader.AssetBundleGetRequestHeaderDelegate,AutoyaFramework.AssetBundles.AssetBundleListDownloader.HttpResponseHandlingDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleListDownloader"/> class.
+            </summary>
+            <param name="requestHeader">Request header.</param>
+            <param name="httpResponseHandlingDelegate">Http response handling delegate.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleListDownloader.DownloadAssetBundleList(System.String,System.Action{AutoyaFramework.AssetBundles.AssetBundleList},System.Action{System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Double)">
+            <summary>
+            Downloads the asset bundle list.
+            </summary>
+            <returns>The asset bundle list.</returns>
+            <param name="url">URL.</param>
+            <param name="done">Done.</param>
+            <param name="failed">Failed.</param>
+            <param name="timeoutSec">Timeout sec.</param>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundleLoadError">
+            <summary>
+            Asset bundle load error.
+            </summary>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundleLoader">
+            <summary>
+            Asset bundle loader.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.#ctor(System.String,AutoyaFramework.AssetBundles.AssetBundleList,AutoyaFramework.AssetBundles.AssetBundleLoader.AssetBundleGetRequestHeaderDelegate,AutoyaFramework.AssetBundles.AssetBundleLoader.HttpResponseHandlingDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundleLoader"/> class.
+            </summary>
+            <param name="basePath">Base path.</param>
+            <param name="list">List.</param>
+            <param name="requestHeader">Request header.</param>
+            <param name="httpResponseHandlingDelegate">Http response handling delegate.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.CleanCachedAssetBundles">
+            <summary>
+            Cleans the cached asset bundles.
+            </summary>
+            <returns><c>true</c>, if cached asset bundles was cleaned, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.GetAssetBundlesWeight(System.String[])">
+            <summary>
+            Gets the asset bundles weight.
+            </summary>
+            <returns>The asset bundles weight.</returns>
+            <param name="bundleNames">Bundle names.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.AssetBundleInfoOfAsset(System.String)">
+            			get AssetBundleInfo which contains requested asset name.
+            			this method is useful when you want to know which assets are contained with specific asset.
+            			return empty AssetBundleInfo if assetName is not contained by any AssetBundle in current AssetBundleList.
+            <summary>
+            Assets the bundle info of asset.
+            </summary>
+            <returns>The bundle info of asset.</returns>
+            <param name="assetName">Asset name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.AssetBundleInfo(System.String)">
+            <summary>
+            Assets the bundle info.
+            </summary>
+            <returns>The bundle info.</returns>
+            <param name="bundleName">Bundle name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.LoadAsset``1(System.String,System.Action{System.String,``0},System.Action{System.String,AutoyaFramework.AssetBundles.AssetBundleLoadError,System.String,AutoyaFramework.AutoyaStatus},System.Double)">
+            			load specific type Asset from AssetBundle.
+            			dependency of AssetBundle will be solved automatically.
+            
+            			note:
+            				this timeoutSec param is enabled only for downloading AssetBundle from web.
+            
+            				複数のAssetBundleに依存していて、それのうちのひとつとかがtimeoutしたら
+            <summary>
+            Loads the asset from AssetBundle.
+            </summary>
+            <returns>The asset.</returns>
+            <param name="assetName">Asset name.</param>
+            <param name="loadSucceeded">Load succeeded.</param>
+            <param name="loadFailed">Load failed.</param>
+            <param name="timeoutSec">Timeout sec.</param>
+            <typeparam name="T">The type for loading asset.</typeparam>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.LoadAssetBundleOnMemory``1(System.String,System.String,System.UInt32,UnityEngine.Hash128,System.Action{System.String,``0},System.Action{System.String,AutoyaFramework.AssetBundles.AssetBundleLoadError,System.String,AutoyaFramework.AutoyaStatus},System.Int64,System.Boolean)">
+            			load assetBundle on memory.
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.DownloadAssetBundle(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.UInt32,UnityEngine.Hash128,System.Action{System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},UnityEngine.AssetBundle},System.Action{System.String,System.Int32,System.String,System.Collections.Generic.Dictionary{System.String,System.String}},System.Int64)">
+            <summary>
+            Downloads the asset bundle.
+            </summary>
+            <returns>The asset bundle.</returns>
+            <param name="bundleName">Bundle name.</param>
+            <param name="connectionId">Connection identifier.</param>
+            <param name="requestHeader">Request header.</param>
+            <param name="url">URL.</param>
+            <param name="crc">Crc.</param>
+            <param name="hash">Hash.</param>
+            <param name="succeeded">Succeeded.</param>
+            <param name="failed">Failed.</param>
+            <param name="limitTick">Limit tick.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.GetAssetBundleDownloadUrl(System.String)">
+            <summary>
+            Gets the asset bundle download URL.
+            </summary>
+            <returns>The asset bundle download URL.</returns>
+            <param name="bundleName">Bundle name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.OnMemoryBundleNames">
+            <summary>
+            Ons the memory bundle names.
+            </summary>
+            <returns>The memory bundle names.</returns>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.OnMemoryAssetNames">
+            <summary>
+            Ons the memory asset names.
+            </summary>
+            <returns>The memory asset names.</returns>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.GetContainedAssetBundleName(System.String)">
+            <summary>
+            Gets the name of the contained asset bundle.
+            </summary>
+            <returns>The contained asset bundle name.</returns>
+            <param name="assetName">Asset name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.IsAssetBundleCachedOnMemory(System.String)">
+            <summary>
+            Ises the asset bundle cached on memory.
+            </summary>
+            <returns><c>true</c>, if asset bundle cached on memory was ised, <c>false</c> otherwise.</returns>
+            <param name="bundleName">Bundle name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.IsAssetBundleCachedOnStorage(System.String)">
+            <summary>
+            Ises the asset bundle cached on storage.
+            </summary>
+            <returns><c>true</c>, if asset bundle cached on storage was ised, <c>false</c> otherwise.</returns>
+            <param name="bundleName">Bundle name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.UnloadOnMemoryAssetBundles">
+            <summary>
+            Unloads the on memory asset bundles.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.UnloadOnMemoryAssetBundle(System.String)">
+            <summary>
+            Unloads the on memory asset bundle.
+            </summary>
+            <param name="bundleName">Bundle name.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundleLoader.UnloadOnMemoryAsset(System.String)">
+            <summary>
+            Unloads the on memory asset.
+            </summary>
+            <param name="assetNameName">Asset name name.</param>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.PreloadList">
+                   preloadList
+                    └ name // human readable name of list.
+                    └ bundleNames // string[]
+                        └ bundleName // preload target bundle name.
+            <summary>
+            type of PreloadList.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.PreloadList.#ctor(System.String,AutoyaFramework.AssetBundles.AssetBundleList)">
+            			create preloadList which contains whole assetBundle names in the AssetBundleList.
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.PreloadList"/> class.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="list">List.</param>
+        </member>
+        <member name="T:AutoyaFramework.AssetBundles.AssetBundlePreloader">
+            <summary>
+            Asset bundle preloader.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundlePreloader.#ctor(AutoyaFramework.AssetBundles.AssetBundlePreloader.AssetBundleGetRequestHeaderDelegate,AutoyaFramework.AssetBundles.AssetBundlePreloader.HttpResponseHandlingDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoyaFramework.AssetBundles.AssetBundlePreloader"/> class.
+            </summary>
+            <param name="requestHeader">Request header.</param>
+            <param name="httpResponseHandlingDelegate">Http response handling delegate.</param>
+        </member>
+        <member name="M:AutoyaFramework.AssetBundles.AssetBundlePreloader.Preload(AutoyaFramework.AssetBundles.AssetBundleLoader,System.String,System.Action{System.String[],System.Action,System.Action},System.Action{System.Double},System.Action,System.Action{System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Action{System.String,System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Int32,System.Double)">
+            			preload assetBundle from list url.
+        </member>
+        <member name="T:AutoyaFramework.AutoyaStatus">
+            		struct for represents Autoya's specific status.
+            		
+            		if inMaintenance == true, server is in maintenance mode. == server returned http code for maintenance.
+            			see OverridePoint.cs "IsUnderMaintenance" method to change this behaviour.
+            
+            		if isAuthFailed == true, server returned 401.
+            			see OverridePoint.cs "IsUnauthorized" method to change this behaviour.
+        </member>
+        <member name="T:AutoyaFramework.Autoya">
+            		assetBundles implementation.
+            
+            
+            		authenticated http feature.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_DownloadAssetBundleListIfNeed(System.Action{AutoyaFramework.Autoya.ListDownloadResult},System.Action{AutoyaFramework.Autoya.ListDownloadError,System.String,AutoyaFramework.AutoyaStatus},System.Double)">
+            			Download assetBundleList from OverridePoints url if need.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_AssetBundleList">
+            			get copy of assetBundleList which is storead in this device.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_PostponedNewAssetBundleList">
+            			returns postponed assetBundleList instance if exist.
+            			otherwise return empty assetBundleList.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_IsAssetExist(System.String)">
+            			check if assetBundleList contains specific named asset.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_IsAssetBundleExist(System.String)">
+            			check if assetBundleList contains specific named assetBundle.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_GetAssetBundlesWeight(System.String[])">
+            			get total weight of specific AssetBundles.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_NotCachedBundleNames(System.Action{System.String[]})">
+            			get bundle names of "not storage cached" assetBundle from assetBundleList.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_Preload(System.String,System.Action{System.String[],System.Action,System.Action},System.Action{System.Double},System.Action,System.Action{System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Action{System.String,System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Int32,System.Double)">
+            			download the list of prelaodable assetBundle names from preloadListUrl, then download assetBundles.
+            			this feature will download "not downloaded" assetBundles only.
+            
+            			onBeforePreloading:
+            				you can set the Action to this param for getting "will be download assetBundles names".
+            				then if execute proceed(), download will be started. 
+            				else, execute cancel(), download will be cancelled.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AssetBundle_PreloadByList(AutoyaFramework.AssetBundles.PreloadList,System.Action{System.String[],System.Action,System.Action},System.Action{System.Double},System.Action,System.Action{System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Action{System.String,System.Int32,System.String,AutoyaFramework.AutoyaStatus},System.Int32,System.Double)">
+            			download assetBundles by the preloadList, then download assetBundles.
+            			this feature will download "not downloaded" assetBundles only.
+            
+            			onBeforePreloading:
+            				you can set the Action to this param for getting "will be download assetBundles names".
+            				then if execute proceed(), download will be started. 
+            				else, execute cancel(), download will be cancelled
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AuthRouter.OnBootResult(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.String,System.String)">
+            				http response rooting of boot.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AuthRouter.Logout">
+            				logout.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AuthRouter.Expired">
+            				token has been expired. start refresh token if need.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.AuthRouter.RetryAuthentication">
+            				attpemt to retry authentication flow.
+            
+            				this method is useful in these cases.
+            					When first boot was failed and player saw that information, then player pushed to retry.
+            						or
+            					When token refreshing was failed and player saw that information, then player pushed to retry.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.HttpResponseHandling(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32,System.Object,System.String,System.Action{System.String,System.Object},System.Action{System.String,System.Int32,System.String,AutoyaFramework.AutoyaStatus})">
+            			Autoyaのhttpエラーハンドリングのコアメソッド。
+            
+            			HttpResponseHandling
+            
+            			・Unityの返してくるhttpコードを処理し、failedを着火する。
+            				offlineとかそのへん。
+            			
+            			・メンテナンスなどのチェックを行い、メンテモードの通知をする。
+            				その後failedを着火する。
+            
+            			・401のチェックを行い、tokenRefreshを行う。
+            				その後failedを着火する。
+            
+            			・httpコードのチェックを行い、200系でなければfailedを着火する
+            
+            			・200系であればsucceededを着火する。
+            
+            			・AssetBundleListのダウンロードを行なった後、resversionが含まれたレスポンスが来た場合、追加でリストの取得処理を行うかどうか判断する。
+        </member>
+        <member name="M:AutoyaFramework.Autoya.CheckAuthFailed(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+            			received auth-failed response from server.
+            			should authenticate again.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.Auth_SetOnRefreshAuthFailed(System.Action{System.Int32,System.String})">
+            			set new handler for auth token refreshed.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.Auth_DeleteAllUserData">
+            			delete all user data. and set to logout.
+        </member>
+        <member name="T:AutoyaFramework.Autoya.AutoyaParameters">
+                        all conditions which Autoya has.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.TestEntryPoint(System.String)">
+            			this method can be called for testing.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.Info_Show(UnityEngine.GameObject,System.String,System.String)">
+            			show information view from url.
+                        scrollView should have component which implement IUUebViewEventHandler for receiving events.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.IsUnderMaintenance(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+            			return if server is under maintenance or not.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.IsFirstBoot">
+            			return true if already authenticated, return false if not.
+            			you can load your authenticated data (kind of Token) here.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnBootAuthRequest(System.Action{System.Collections.Generic.Dictionary{System.String,System.String},System.String})">
+            			send authentication data to server at first boot.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnBootAuthResponse(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Action{System.Int32,System.String})">
+            			received first boot authentication result.
+            			if failed to validate response, call bootAuthFailed(int errorCode, string reason).
+            				this bootAuthFailed method raises the notification against Autoya.Auth_SetOnBootAuthFailed() handler.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnLogout">
+            			on logout handler.
+            			after here, you can call "Autoya.Auth_AttemptAuthentication()". then "OnBootAuthRequest()" will be called.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnDeleteAllUserData">
+            			handler of delete all user data.
+            			after here, you can call "Autoya.Auth_AttemptAuthentication()". then "IsFirstBoot()" will be called.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.IsUnauthorized(System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+            			check if server response is unauthorized or not.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnTokenRefreshRequest(System.Action{System.Collections.Generic.Dictionary{System.String,System.String},System.String})">
+            			received Unauthorized code from server. then, should authenticate again.
+            			set header and data for refresh token.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnTokenRefreshResponse(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Action{System.Int32,System.String})">
+            			received refreshed token.
+            			if failed to validate response, call refreshFailed(int errorCode, string reason).
+            				this refreshFailed method raises the notification against Autoya.Auth_SetOnRefreshAuthFailed() handler.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnHttpRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            			fire when generating http request, via Autoya.Http_X.
+            			you can add some kind of authorization parameter to request header.
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AutoyaFramework.Autoya.OnValidateHttpResponse(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String@)" -->
+        <member name="M:AutoyaFramework.Autoya.OnLoadProductsResponse(System.String)">
+            			fire when the server returns product datas for this app.
+            			these datas should return platform-specific data.
+            
+            			e,g, if player is iOS, should return iOS item data.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnPurchaseReady">
+            			purchase feature is succeeded to load.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnPurchaseReadyFailed(AutoyaFramework.Purchase.PurchaseRouter.PurchaseReadyError,System.Int32,System.String,AutoyaFramework.AutoyaStatus)">
+            			fire when failed to ready the purchase feature.
+            			
+            			offline, server returned error, or failed to ready IAPFeature.
+            
+            			e,g, show dialog to player. for example "reloading purchase feature... please wait a moment" or other message of error.
+            				this err parameter includes "player can not available purchase feature".
+            
+            				see Purchase.PurchaseRouter.PurchaseReadyError enum.
+            
+            			then, you can retry with Purchase_AttemptReady() method.
+            			when success, OnPurchaseReady will be called.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnTicketResponse(System.String)">
+            			received ticket data for purchasing product via Autoya.Purchase.
+            			you can modify received ticket data string to desired data.
+            			returned string will be send to the server for item-deploy information of this purchase.
+        </member>
+        <member name="F:AutoyaFramework.Autoya.OnRequestNewAssetBundleList">
+            			fire when you received new assetBundleList version parameter from authenticated http response's response header.
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:AutoyaFramework.Autoya.ShouldUpdateToNewAssetBundleList" -->
+        <member name="M:AutoyaFramework.Autoya.OnAssetBundleGetRequest(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            			request headers of AssetBundles features.
+            
+            			used for 
+            				assetBundleList downloading request, 
+            				assetBundle preloading request, 
+            				assetBundle downloading request.
+        </member>
+        <member name="F:AutoyaFramework.Autoya.OnNewAppRequested">
+            			do something for server requested client to download latest app from store.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnOverwriteRuntimeManifest(System.String)">
+            			called when runtimeManifest should overwrite.
+            			please set the mechanism for store runtime manifest in this device.
+        </member>
+        <member name="M:AutoyaFramework.Autoya.OnLoadRuntimeManifest">
+            			called when runtimeManifest should load.
+            			please set the mechanism for load runtime manifest in this device.
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AutoyaFramework.Autoya.Purchase(System.String,System.String,System.Action{System.String},System.Action{System.String,AutoyaFramework.Purchase.PurchaseRouter.PurchaseError,System.String,AutoyaFramework.AutoyaStatus})" -->
+        <member name="M:AutoyaFramework.Autoya.Purchase_DEBUG_Shutdown">
+            			do not use this method in actual use.
+            			this method is only for testing.
+        </member>
+        <member name="M:AutoyaFramework.AutoyaMainThreadDispatcher.OnApplicationQuit">
+            			automatically destory this gameObject.
+        </member>
+        <member name="T:AutoyaFramework.EditorUpdator">
+            		Update() runner class for Editor.
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:AutoyaFramework.AppManifest.AppManifestStoreSettings" -->
+        <member name="T:AutoyaFramework.AppManifest.BuildManifestObject">
+                    Autoyaで使用する静的な設定パラメータに関する型情報。
+                    Resourcesに保存される。
+            
+                    動的に書き換えることができない。
+                    初期値を与えることができる。
+        </member>
+        <member name="T:AutoyaFramework.AppManifest.RuntimeManifestObject">
+                    Autoyaで使用する動的な設定パラメータに関する型情報。
+                    アプリケーション内に保存される。
+            
+                    動的に書き換えることができる。
+                    初期値を与えることができる。
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.Append(System.String,System.String,System.String)">
+            			append data to end of domain/fileName file.
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.Update(System.String,System.String,System.String)">
+            			update data of domain/fileName file.
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.FileNamesInDomain(System.String)">
+            			returns all file names in domain/.
+            			
+            			ignore .(dot) start named file.
+            			e.g. 
+            				.dat will be ignored.
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.Load(System.String,System.String)">
+            			load data from domain/fileName if file is exists.
+            			else return empty.
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.Delete(System.String,System.String)">
+            			delete domain/fileName if exists. then return true.
+            			else return false.
+        </member>
+        <member name="M:AutoyaFramework.Persistence.Files.FilePersistence.DeleteByDomain(System.String)">
+            			delete all files in domain/.
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.#ctor(AutoyaFramework.Purchase.ProductInfo[],System.Action,System.Action{AutoyaFramework.Purchase.LocalPurchaseRouter.PurchaseError,System.String},System.Action{System.String})">
+            			constructor.
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.OnInitialized(UnityEngine.Purchasing.IStoreController,UnityEngine.Purchasing.IExtensionProvider)">
+            <summary>
+            Called when Unity IAP is ready to make purchases.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.OnInitializeFailed(UnityEngine.Purchasing.InitializationFailureReason)">
+             <summary>
+             Called when Unity IAP encounters an unrecoverable initialization error.
+            
+             Note that this will not be called if Internet is unavailable; Unity IAP
+             will attempt initialization until it becomes available.
+             </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.PurchaseAsync(System.String,System.String,System.Action{System.String},System.Action{System.String,AutoyaFramework.Purchase.LocalPurchaseRouter.PurchaseError,System.String})">
+            			start purchase.
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.ProcessPurchase(UnityEngine.Purchasing.PurchaseEventArgs)">
+             <summary>
+             Called when a purchase completes.
+            
+             May be called at any time after OnInitialized().
+             </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.LocalPurchaseRouter.OnPurchaseFailed(UnityEngine.Purchasing.Product,UnityEngine.Purchasing.PurchaseFailureReason)">
+            <summary>
+            Called when a purchase fails.
+            </summary>
+        </member>
+        <member name="T:AutoyaFramework.Purchase.ProductInfo">
+            		struct for product data.
+        </member>
+        <member name="T:AutoyaFramework.Purchase.ProductInfos">
+            		serialized product info struct.
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AutoyaFramework.Purchase.PurchaseRouter.#ctor(System.Action{System.Collections.IEnumerator},System.Func{System.String,AutoyaFramework.Purchase.ProductInfo[]},System.Func{System.String,System.String},System.Action,System.Action{AutoyaFramework.Purchase.PurchaseRouter.PurchaseReadyError,System.Int32,System.String},AutoyaFramework.Purchase.PurchaseRouter.HttpRequestHeaderDelegate,AutoyaFramework.Purchase.PurchaseRouter.HttpResponseHandlingDelegate)" -->
+        <member name="M:AutoyaFramework.Purchase.PurchaseRouter.OnInitialized(UnityEngine.Purchasing.IStoreController,UnityEngine.Purchasing.IExtensionProvider)">
+            <summary>
+            Called when Unity IAP is ready to make purchases.
+            </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.PurchaseRouter.OnInitializeFailed(UnityEngine.Purchasing.InitializationFailureReason)">
+             <summary>
+             Called when Unity IAP encounters an unrecoverable initialization error.
+            
+             Note that this will not be called if Internet is unavailable; Unity IAP
+             will attempt initialization until it becomes available.
+             </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.PurchaseRouter.PurchaseAsync(System.String,System.String,System.Action{System.String},System.Action{System.String,AutoyaFramework.Purchase.PurchaseRouter.PurchaseError,System.String})">
+            			start purchase.
+        </member>
+        <member name="M:AutoyaFramework.Purchase.PurchaseRouter.ProcessPurchase(UnityEngine.Purchasing.PurchaseEventArgs)">
+             <summary>
+             Called when a purchase completes.
+            
+             May be called at any time after OnInitialized().
+             </summary>
+        </member>
+        <member name="M:AutoyaFramework.Purchase.PurchaseRouter.OnPurchaseFailed(UnityEngine.Purchasing.Product,UnityEngine.Purchasing.PurchaseFailureReason)">
+            <summary>
+            Called when a purchase fails.
+            </summary>
+        </member>
+        <member name="T:UUebView.UUebViewComponent">
+            		UUebView component.
+            
+            		testing usage:
+            			attach this component to gameobject and set preset urls and event receiver.
+            
+            		actual usage:
+            			let's use UUebView.GenerateSingleViewFromHTML or UUebView.GenerateSingleViewFromUrl.
+                        they returns view GameObject of UUebView and attach it to your window.
+        </member>
+        <member name="T:LocalPurchase">
+            	Purchase example of local validate based purchase.
+        </member>
+        <member name="T:RemotePurchase">
+            	Purchase example of server side validate based purchase.
+        </member>
+        <member name="M:InformationEventReceiver.RotateElement(UnityEngine.GameObject)">
+                    適当に時間をかけてボタンアイコンを半回転させるアニメーション。
+        </member>
+        <member name="T:AssetBundleListDownloaderTests">
+            	tests for Autoya Download list of whole AssetBundles.
+        </member>
+        <member name="T:AssetBundleLoaderTests">
+            	tests for Autoya AssetBundle Read from cache.
+        </member>
+        <member name="T:AssetBundlePreloaderTests">
+            	tests for download preloadList of the AssetBundles.
+        </member>
+        <member name="T:AppUpdateTests">
+                appVersionが変わったという情報をサーバが流してきた場合、
+                特定のハンドラでそれを受けて、メソッドを実行する。
+        </member>
+        <member name="T:AssetUpdateTests">
+                resVersionが変わったという情報をサーバが流してきた場合、
+                AssetBundlesImpl側でその情報を取得、リストのロードを行う。
+                この間、既存のAssetはすべて影響を受けそう。
+                ・どんなイベントを提供するか
+                
+                    ・状況判断を受け取って
+                        使っているAssetが更新される内容のリストが更新される予定。
+                        使っているAssetはないがリストが更新される予定。
+            
+                    ・enumを返す
+                        yes リストの更新を行っていいよ
+                            リストの更新が行われる。
+                            既存のAssetについてどういう選択肢が取れる？
+                                ・使っている部分がある場合、そのAssetをそのまま使い続けることができる。
+                                ・現在使っているものを全部消して特定のstateに行くこともできる+そこでpreloadを使うのもあり。
+            
+                                再度ロードした時には新しいものがゲットできるようにする(これはできそう、条件付きのキャッシュ破棄予約)
+                                まだロードしてない部分については単に取得し直しになるだけ、このへんはPreloadで対応してくれてれば文句ない。
+            
+                                ということで、preloadで対応できれば本当に平気そう。
+            
+                        no  リストの更新を今は無視するよ(どうせあとですぐまた通知がくる。
+                            gameStateに関連して無視すればいいというスンポー。
+                            未切り替えリストがある場合はオンメモリに保持しておく。同じレスポンスが来た時にそのままイベント着火となる。
+                    
+                    その上で、画面遷移をこの中 or 後ろで継続して実行してもらう。
+        </member>
+        <member name="T:AuthenticatedHTTPImplementationTests">
+            	tests for Autoya Authenticated HTTP.
+            	Autoya strongly handle these server-related errors which comes from game-server.
+            	
+            	these test codes are depends on online env + "https://httpbin.org".
+        </member>
+        <member name="T:AuthImplementationTests">
+            	test for authorization flow control.
+        </member>
+        <member name="T:MaintenanceTests">
+            	tests for Maintenance feature.
+        </member>
+        <member name="T:PersistImplementationTests">
+            	test for persistent data control in Autoya specific domain.
+        </member>
+        <member name="T:PurchaseImplementationTests">
+            	test for purchase via Autoya.
+        </member>
+        <member name="T:FilePersistImplementationTests">
+            	test for file persist controll.
+        </member>
+        <member name="T:PurchaseRouterTests">
+            	tests for Autoya Purchase
+        </member>
+        <member name="F:PurchaseRouterTests.router">
+            		Unity 5.5以降対応のpurchaseのテスト。以下のようなことをまるっとやっている。
+            
+            		{アイテム一覧取得処理}
+            			・アイテム一覧を取得する。
+            
+            		{アップデート処理} 
+            			・起動時処理(勝手に購買処理が完了したりするはず)
+            			・チケットがない場合の購入完了処理
+            			・チケットがある場合の購入完了処理
+            
+            		{購入処理} 
+            			・事前通信
+            			・購買処理
+            			・チケットの保存
+            			・購買完了通信
+            			
+            			・購入成功チケットの削除
+            			・購入キャンセルチケットの削除
+            			・購入失敗チケットの処理
+            		
+            		非消費アイテム、レストアとかは対応しないぞ。まだ。
+            
+            		特定のUnityのIAPの ConfigurationBuilder.Instance メソッドが、Playing中でないとProgressしない。そのため、このテストをEditorで走らせることができない。
+            		ちょっと回避しようがない。
+        </member>
+        <member name="T:JWTTests">
+            	test for file persist controll.
+        </member>
+        <member name="M:Miyamasu.MainThreadRunner.AddLog(System.String[],Miyamasu.Recorder.ReportType,System.Exception)">
+            			this method will be called from jumper lib.
+        </member>
+        <member name="T:Miyamasu.Miyamasu2UnityTestConverter">
+                    generate UnityTest unit source code from miyamasu test unit.
+        </member>
+        <member name="M:Miyamasu.MiyamasuRuntimeRunnerGenerator.RunTestsFromCode">
+            			run on app playing handler.
+        </member>
+        <member name="T:Miyamasu.Settings">
+            		interface for settings of Miyamasu.
+        </member>
+    </members>
+</doc>
